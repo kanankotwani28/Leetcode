@@ -1,16 +1,4 @@
 class Solution {
-    private boolean canSum(int ind , int target , int[][]dp , int arr[]){
-        if(target == 0) return true;
-        if(ind == 0 ) return arr[0] == target;
-        if(dp[ind][target]  != -1) return dp[ind][target] == 1;
-
-        boolean notTake = canSum(ind-1 , target , dp , arr);
-        boolean take = false; 
-        if(target >= arr[ind]) take = canSum(ind-1 , target - arr[ind] , dp , arr);
-
-        dp[ind][target] = notTake || take ? 1 : 0 ;
-        return notTake || take;
-    }
     public boolean canPartition(int[] arr) {
         int n = arr.length;
         int sum = 0;
@@ -19,6 +7,19 @@ class Solution {
         int dp[][] = new int [n][sum/2+1];
         for(int row[] : dp)
             Arrays.fill(row,-1);
-        return canSum(n-1 , sum/2 , dp , arr);
+        // return canSum(n-1 , sum/2 , dp , arr);
+        int t = sum / 2;
+        for(int i = 0 ; i< n ; i++) dp[i][0] = 1;
+        if(arr[0] <= t) dp[0][arr[0]] = 1;
+        for( int i = 1 ; i< n ; i++){
+            for(int j = 1 ; j <= t ; j++ ){
+                boolean notTake = dp[i-1][j] == 1;
+                boolean take = false; 
+                if(j >= arr[i]) take = dp[i-1][j-arr[i]] == 1;
+                dp[i][j] = notTake || take ? 1 : 0 ;
+            }
+        }
+
+        return dp[n-1][t] == 1;
     }
 }
