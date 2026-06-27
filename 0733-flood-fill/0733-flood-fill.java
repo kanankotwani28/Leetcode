@@ -16,10 +16,10 @@ class Solution {
         if (originalColor == color) return image;
 
         Queue<Pair> q = new LinkedList<>();
-        int[][] vis = new int[n][m];
+        // int[][] vis = new int[n][m];
 
         q.add(new Pair(sr, sc));
-        vis[sr][sc] = 1;
+        // vis[sr][sc] = 1;
         image[sr][sc] = color;
 
         int[] drow = {-1, 0, 1, 0};
@@ -35,11 +35,10 @@ class Solution {
                 int ncol = c + dcol[i];
 
                 if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m &&
-                    vis[nrow][ncol] == 0 &&
                     image[nrow][ncol] == originalColor) {
 
                     q.add(new Pair(nrow, ncol));
-                    vis[nrow][ncol] = 1;
+                    // vis[nrow][ncol] = 1;
                     image[nrow][ncol] = color;
                 }
             }
