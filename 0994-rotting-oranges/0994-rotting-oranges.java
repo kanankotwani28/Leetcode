@@ -54,6 +54,7 @@ class Solution {
                    && grid[nrow][ncol] == 1 && vis[nrow][ncol] == 0){
                     
                     q.add(new Pair(nrow, ncol, t + 1));
+                    grid[nrow][ncol] = 2;
                     vis[nrow][ncol] = 2;
                     cnt++;
                 }
