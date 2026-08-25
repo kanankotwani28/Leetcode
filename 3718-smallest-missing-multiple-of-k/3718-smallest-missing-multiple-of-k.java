@@ -1,6 +1,6 @@
 class Solution {
     public int missingMultiple(int[] nums, int k) {
-       for (int multiple = k; ; multiple += k) {
+        for (int multiple = k; ; multiple += k) {
             boolean found = false;
             for (int num : nums) {
                 if (num == multiple) {
