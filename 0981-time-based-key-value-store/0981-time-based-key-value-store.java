@@ -23,12 +23,10 @@ class TimeMap {
         if (!map.containsKey(key)) {
             return "";
         }
-
         List<Pair> list = map.get(key);
         int low = 0;
         int high = list.size() - 1;
         String ans = "";
-
         while (low <= high) {
             int mid = low + (high - low) / 2;
 
@@ -39,7 +37,6 @@ class TimeMap {
                 high = mid - 1;
             }
         }
-
         return ans;
     }
 }
